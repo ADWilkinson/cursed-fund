@@ -1,0 +1,13 @@
+.LensFrensFundContainer {
+  display: flex;
+  align-items: center;
+}
+
+.LensFrensFundText {
+  font-family: monospace;
+  font-size: 28px;
+  font-weight: 800;
+  margin-left: 18px;
+  cursor: default;
+  color: #00501f;
+}

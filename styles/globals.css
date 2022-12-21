@@ -1,0 +1,117 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: monospace;
+  color: #212322;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  height: 40px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+button {
+  font-family: monospace;
+  border-radius: 0.5rem;
+  height: 40px;
+  padding: 0.5rem 1rem;
+  border: none;
+  transition: 0.25s all ease;
+  background-color: #abfe2c;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 10px;
+  color: inherit;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+}
+
+button:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  display: block;
+  margin: 5px;
+}
+
+li a {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+header {
+  height: 64px;
+  box-sizing: border-box;
+  border: 0 solid #e4e4e7;
+  border-bottom-width: 1px;
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  height: 100%;
+  width: 100%;
+  max-width: 80rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-family: monospace;
+}
+
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  flex-grow: 1;
+  max-width: 512px;
+  border-radius: 0.75rem;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+
+.szh-menu-container {
+  position: absolute !important;
+}
