@@ -22,6 +22,9 @@ import LensLogin from "../components/lens-login";
 import { LensUserContext } from "../components/lens-login-provider";
 import { LensFriendsContext } from "../components/lens-friends-provider";
 
+const BULLISH = "BULLISH";
+const BEARISH = "BEARISH";
+
 export default function Home() {
   const { data } = useSession();
 
@@ -32,19 +35,18 @@ export default function Home() {
 
   const [inputValue, setInputValue] = useState("");
 
-  const twitterInput = useRef(null);
 
-  const onChangeHandler = (event: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setInputValue(event.target.value);
-  };
+  const pushSentiment = async (sentiment: string) => {
 
-  useEffect(() => {
-    if (twitterInput.current) twitterInput.current.focus();
-  }, []);
+    if (sentiment === BULLISH) {
+      console.log("Bullish");
+    } else if (sentiment === BEARISH) {
+      console.log("Bearish");
 
-  const checkProvider = async () => { };
+    } else {
+      throw new Error(`Invalid sentiment: ${sentiment}`);
+    }
+  }
 
   const followRequest = async (id: string) => {
     const notifySuccess = () => {
@@ -308,8 +310,8 @@ export default function Home() {
 
           <div>
 
-            <button onClick={() => findFrensRequest()}>Bullish</button>
-            <button onClick={() => findFrensRequest()}>Bearish</button>
+            <button className="btn-bullish" onClick={() => pushSentiment(BULLISH)}>Bullish</button>
+            <button className="btn-bearish" onClick={() => pushSentiment(BEARISH)}>Bearish</button>
           </div>
 
           <div className={styles.pleaseWait}>

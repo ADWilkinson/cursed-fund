@@ -8,7 +8,7 @@ const LensFrensFundLogoNav = () => {
         unoptimized
         height="48"
         width="48"
-        src="/seed-bag.png"
+        src="/bean.png"
         alt="lensfrensfund logo"
       ></Image>
       <span className={styles.LensFrensFundText}>Lens Frens Fund</span>

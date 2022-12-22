@@ -49,6 +49,49 @@ button {
   -moz-user-select: none;
 }
 
+.btn-bearish {
+  font-family: monospace;
+  border-radius: 0.5rem;
+  height: 50px;
+  padding: 0.5rem 2rem;
+  border: none;
+  transition: 0.25s all ease;
+  background-color: #f54f4f8a;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 10px;
+  color: inherit;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+}
+
+.btn-bullish {
+  font-family: monospace;
+  border-radius: 0.5rem;
+  height: 50px;
+  padding: 0.5rem 2rem;
+  border: none;
+  transition: 0.25s all ease;
+  background-color: #f5894f8a;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 10px;
+  color: inherit;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+}
+
+
 button:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
   cursor: pointer;
