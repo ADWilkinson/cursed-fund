@@ -1,8 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/dapp/node_modules
-/dapp/.pnp
+dapp/node_modules
+dapp/.pnp
 dapp/.pnp.js
 
 # testing
@@ -22,7 +22,8 @@ dapp/.env.production.local
 dapp/npm-debug.log*
 dapp/yarn-debug.log*
 dapp/yarn-error.log*
-dapp/.yarn/*
+dapp/.yarn/cache
 
 # Local Netlify folder
 .netlify
+
