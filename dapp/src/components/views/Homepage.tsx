@@ -111,11 +111,9 @@ const HomePage = () => {
         <div className="">
           <div className="block col-span-1 w-1/2 m-auto bg-theme-pan-champagne border-t border-b border-theme-pan-navy  divide-y divide-theme-pan-navy">
             <div className="block border-none">
-              <p className="text-xl text-theme-pan-sky pt-3 font-bold  m-auto text-center justify-center">10,000 USDC to allocate</p>
-              <p className="text-xl text-theme-pan-navy pb-3  m-auto text-center justify-center">Join the crew<br></br><a className="hover:text-theme-pan-sky" href="https://discord.gg/galleondao" target={'_blank'}>discord.gg/galleondao</a></p>
-              <a href={CURSED_FUND_ARBISCAN} target={"_blank"} className="mx-auto  text-center py-2 justify-center flex hover:opacity-70 items-center rounded-xl bg-theme-pan-navy  px-2.5 text-sm font-medium text-theme-pan-champagne">
-                arbiscan.io/address/{CURSED_FUND_ADDRESS}
-              </a>
+              <p className="text-xl text-theme-pan-sky pt-6 font-bold  m-auto text-center justify-center">10,000 USDC to allocate</p>
+              <p className="text-xl text-theme-pan-navy  m-auto text-center justify-center">Join the crew<br></br><a className="hover:text-theme-pan-sky" href="https://discord.gg/galleondao" target={'_blank'}>discord.gg/galleondao</a></p>
+      
             </div>
             <div className="w-full items-center justify-between p-6 border-none space-x-6">
 
@@ -125,8 +123,8 @@ const HomePage = () => {
 
                   <div>
                     {parseFloat(dblBalance) < DBL_MINIMUM ?
-                      <>
-                        <span className=" font-bold inline-flex items-center rounded-full py-0.5 text-md text-theme-pan-navy">
+                      <div className="border-t border-b border-theme-pan-navy mb-3">
+                        <span className="font-bold inline-flex items-center py-0.5 text-md text-theme-pan-navy">
                           Insufficient Balance: {' '}
                           <span className=" pl-2 text-theme-sky">{parseFloat(dblBalance).toFixed(2)}</span>
                           <Box
@@ -146,7 +144,7 @@ const HomePage = () => {
                         </span>
                         <p className="text-md text-theme-pan-navy font-bold pb-3 ">To participate in Cursed Fund voting, {DBL_MINIMUM} $DBL is required.</p>
 
-                      </>
+                      </div>
                       : <></>}
 
                   </div>
@@ -273,6 +271,7 @@ const HomePage = () => {
 
                 {account ? <div className="  ">
 
+                  
                   <h3 className="text-lg font-medium leading-6 text-theme-pan-navy">Current Holdings</h3>
                   <dl className="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 justify-center">
 
@@ -350,8 +349,14 @@ const HomePage = () => {
                   </div>
 
                 </dl>
+
+                <a href={CURSED_FUND_ARBISCAN} target={"_blank"} className="mx-auto mt-6  text-center py-2 justify-center flex hover:opacity-70 items-center rounded-xl bg-theme-pan-navy  px-2.5 text-sm font-medium text-theme-pan-champagne">
+                  arbiscan.io/address/{CURSED_FUND_ADDRESS}
+                </a>
               </div>
-              <div className="border-none pt-8 text-center text-theme-pan-navy">
+
+              
+              <div className="border-none pt-6 text-center text-theme-pan-navy">
                 <p className="text-xl  font-bold">Pending {new Date(new Date().setDate(new Date().getDate() + (((0 + 7 - new Date().getDay()) % 7) || 7))).toDateString()} Rebalance (Currently)</p>
 
                 <span className=" font-bold inline-flex items-center border-none py-0.5 text-xl ">
