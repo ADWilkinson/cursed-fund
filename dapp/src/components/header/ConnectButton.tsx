@@ -1,13 +1,11 @@
-import { colors } from "styles/colors";
 
-import {  Flex, Text, useDisclosure } from "@chakra-ui/react";
+import {  useDisclosure } from "@chakra-ui/react";
 import { useEthers, useLookupAddress } from "@usedapp/core";
 import { useToast } from "@chakra-ui/react";
 
 import ConnectModal from "./ConnectModal";
 import NetworkSelector from "./NetworkSelector";
-import { useEffect, useState } from "react";
-import { KNOWN_SERVICES, KNOWN_LABELS } from "@galleondao/logging-lib";
+import { useEffect } from "react";
 import { useNetwork } from "hooks/useNetwork";
 import {
   PendingTransactionState,
