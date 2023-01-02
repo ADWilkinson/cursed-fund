@@ -10,7 +10,9 @@ const PageTitle = (props: PageTitleProps) => {
         <h2 className="text-3xl  m-auto text-center justify-center font-bold leading-7 font-morion text-theme-pan-navy sm:text-4xl sm:truncate">
           {props.title}
         </h2>
-        <p className="text-xl pt-2 text-theme-pan-navy  m-auto text-center justify-center">{props.subtitle}</p>
+        <p className="text-xl pt-2 text-theme-pan-navy  m-auto text-center justify-center">
+          {props.subtitle}
+        </p>
       </div>
     </div>
   );

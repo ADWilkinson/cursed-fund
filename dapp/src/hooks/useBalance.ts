@@ -52,14 +52,10 @@ export const useBalance = () => {
     if (!account || !chainId) return;
     const web3Provider = provider as providers.JsonRpcProvider;
     const fetchAllBalances = async () => {
-      const dbl = await balanceOf(
-        DoubloonToken,
-        account,
-        web3Provider
-      );
+      const dbl = await balanceOf(DoubloonToken, account, web3Provider);
       const usdc = await balanceOf(USDC, account, web3Provider);
       const weth = await balanceOf(WETH, account, web3Provider);
-      
+
       setDoubloonBalance(dbl);
       setUsdcBalance(usdc);
       setWethBalance(weth);

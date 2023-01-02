@@ -69,7 +69,9 @@ const TransactionStateView = (props: TransactionStateViewProps) => {
           >
             <circle cx={4} cy={4} r={3} />
           </svg>
-          <span className="text-theme-pan-champagne">Transaction Succeeded</span>
+          <span className="text-theme-pan-champagne">
+            Transaction Succeeded
+          </span>
         </>
       );
     default:

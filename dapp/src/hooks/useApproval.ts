@@ -51,7 +51,7 @@ export const useApproval = (
   const { chainId } = useNetwork();
   const { addTransaction } = useTransactions();
 
-  const tokenAddress = token && token.arbitrumAddress
+  const tokenAddress = token && token.arbitrumAddress;
   const approvalState = useApprovalState(amount, tokenAddress, spenderAddress);
 
   const [isApproving, setIsApproving] = useState(false);

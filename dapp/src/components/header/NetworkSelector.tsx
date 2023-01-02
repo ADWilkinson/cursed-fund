@@ -23,8 +23,8 @@ const NetworkSelector = () => {
 
   useEffect(() => {
     setNetwork(SUPPORTED_CHAINS.find((x) => x.chainId === chainId) ?? MAINNET);
-  }, [chainId])
-  
+  }, [chainId]);
+
   return (
     <div className="inline-flex ml-4">
       <Listbox value={selected} onChange={setNetwork}>
@@ -87,7 +87,9 @@ const NetworkSelector = () => {
                           {selected ? (
                             <span
                               className={classNames(
-                                active ? "text-theme-pan-navy" : "text-indigo-600",
+                                active
+                                  ? "text-theme-pan-navy"
+                                  : "text-indigo-600",
                                 "absolute  inset-y-0 right-0 flex items-center pr-4"
                               )}
                             >

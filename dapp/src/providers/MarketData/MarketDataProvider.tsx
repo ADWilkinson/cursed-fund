@@ -6,12 +6,7 @@ import {
   useState,
 } from "react";
 
-import {
-  ETH,
-  USDC,
-  WETH,
-  DoubloonToken
-} from "constants/tokens";
+import { ETH, USDC, WETH, DoubloonToken } from "constants/tokens";
 import { fetchHistoricalTokenMarketData } from "utils/coingeckoApi";
 
 export interface TokenMarketDataValues {

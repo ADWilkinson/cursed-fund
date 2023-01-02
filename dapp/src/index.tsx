@@ -1,20 +1,18 @@
 import React from "react";
-import { BrowserRouter, createBrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 import App from "App";
 import theme from "theme";
 import { createRoot } from "react-dom/client";
 import "@fontsource/ibm-plex-sans";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Config, DAppProvider } from "@usedapp/core";
-import {
-  RouterProvider,
-} from "react-router-dom";
-import {
-  ARBITRUM,
-  MAINNET,
-  OPTIMISM,
-  POLYGON,
-} from "constants/chains";
+import { RouterProvider } from "react-router-dom";
+import { ARBITRUM, MAINNET, OPTIMISM, POLYGON } from "constants/chains";
 import { MarketDataProvider } from "providers/MarketData/MarketDataProvider";
 import "./index.css";
 import { initializeApp } from "firebase/app";
@@ -27,7 +25,7 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -47,9 +45,7 @@ const Providers = (props: { children: any }) => {
   return (
     <ChakraProvider theme={theme}>
       <DAppProvider config={config}>
-        <MarketDataProvider>
-          {props.children}
-        </MarketDataProvider>
+        <MarketDataProvider>{props.children}</MarketDataProvider>
       </DAppProvider>
     </ChakraProvider>
   );
@@ -62,12 +58,9 @@ const router = createBrowserRouter([
   },
 ]);
 
-
 const root = createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <Providers>
     <RouterProvider router={router} />
   </Providers>
 );
-
-

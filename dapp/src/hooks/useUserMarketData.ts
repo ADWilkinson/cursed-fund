@@ -66,7 +66,7 @@ export const useUserMarketData = () => {
   const {
     balances: { ethBalance, wethBalance, usdcBalance, doubloonBalance },
   } = useBalance();
-  const { eth, weth, usdc, dbl} = useMarketData();
+  const { eth, weth, usdc, dbl } = useMarketData();
 
   const balances = [
     { title: "ETH", value: ethBalance },

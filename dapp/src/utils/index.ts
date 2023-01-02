@@ -4,7 +4,13 @@ import { Provider } from "@ethersproject/abstract-provider";
 import { formatUnits, parseUnits } from "@ethersproject/units";
 import { ChainId } from "@usedapp/core";
 
-import { ARBITRUM, MAINNET, OPTIMISM, POLYGON, SUPPORTED_CHAINS } from "constants/chains";
+import {
+  ARBITRUM,
+  MAINNET,
+  OPTIMISM,
+  POLYGON,
+  SUPPORTED_CHAINS,
+} from "constants/chains";
 import { Token } from "constants/tokens";
 
 import { ERC20_ABI } from "./abi/ERC20";

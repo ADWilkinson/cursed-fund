@@ -1,5 +1,4 @@
-
-import {  useDisclosure } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import { useEthers, useLookupAddress } from "@usedapp/core";
 import { useToast } from "@chakra-ui/react";
 
@@ -106,7 +105,9 @@ const ConnectButton = () => {
             >
               <circle cx={4} cy={4} r={3} />
             </svg>
-            <span className="text-theme-pan-champagne">{formatAccountName()}</span>
+            <span className="text-theme-pan-champagne">
+              {formatAccountName()}
+            </span>
           </span>
         ) : (
           <TransactionStateHeader

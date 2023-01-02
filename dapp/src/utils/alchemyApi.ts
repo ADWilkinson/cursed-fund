@@ -1,8 +1,5 @@
 import { ARBITRUM, MAINNET, OPTIMISM, POLYGON } from "constants/chains";
-import {
-  USDC,
-  WETH,
-} from "constants/tokens";
+import { USDC, WETH } from "constants/tokens";
 
 const apiSupport = [MAINNET.chainId, POLYGON.chainId];
 

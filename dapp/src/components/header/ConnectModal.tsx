@@ -61,9 +61,7 @@ export default function ConnectModal(props: {
     const coinbase = new WalletLinkConnector({
       url: process.env.REACT_APP_ARBITRUM_ALCHEMY_API,
       appName: "Galleon",
-      supportedChainIds: [
-        ARBITRUM.chainId,
-      ],
+      supportedChainIds: [ARBITRUM.chainId],
     });
     activate(coinbase)
       .then(() => {})
