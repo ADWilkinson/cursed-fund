@@ -271,7 +271,8 @@ const HomePage = () => {
                 <h3 className="text-lg font-bold leading-6 text-theme-pan-navy">Statistics & Rebalancing</h3>
 
 
-                <div className="  ">
+                {account ? <div className="  ">
+
                   <h3 className="text-lg font-medium leading-6 text-theme-pan-navy">Current Holdings</h3>
                   <dl className="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 justify-center">
 
@@ -328,7 +329,8 @@ const HomePage = () => {
 
 
 
-                </div>
+                </div> : <> </>}
+
 
                 <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
 
