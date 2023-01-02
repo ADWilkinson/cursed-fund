@@ -323,7 +323,7 @@ const HomePage = () => {
                   </>
                 </div>
               </>
-              ) : <div className="justify-center text-center flex"><ConnectButton></ConnectButton></div>}
+            ) : <div className="justify-center text-center flex"><ConnectButton></ConnectButton></div>}
           </div>
         </div>
 
@@ -336,90 +336,92 @@ const HomePage = () => {
               </h3>
 
               {account ? (
-                <div className="  ">
-                  <h3 className="text-lg font-medium leading-6 text-theme-pan-navy">
-                    Current Holdings
-                  </h3>
-                  <dl className="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 justify-center">
-                    <div className="overflow-hidden rounded-lg bg-theme-white px-4 py-5 border border-theme-pan-navy sm:p-6">
-                      <dt className="truncate text-sm font-bold text-theme-pan-navy">
-                        WETH
+                <>
+                  <div className="  ">
+                    <h3 className="text-lg font-medium leading-6 text-theme-pan-navy">
+                      Current Holdings
+                    </h3>
+                    <dl className="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 justify-center">
+                      <div className="overflow-hidden rounded-lg bg-theme-white px-4 py-5 border border-theme-pan-navy sm:p-6">
+                        <dt className="truncate text-sm font-bold text-theme-pan-navy">
+                          WETH
+                        </dt>
+                        <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
+                          {" "}
+                          <span className=" ">
+                            {displayFromWei(fundWethBalance, 2, 18)}
+                          </span>
+                          <div className="inline-flex pr-2 translate-y-1.5 justify-start">
+                            <Box className="justify-start text-left " mt="16px">
+                              <Image
+                                height={["35", "35"]}
+                                borderRadius={"25"}
+                                opacity={"100%"}
+                                src={ETH.image}
+                                alt="Chest Icon"
+                              />{" "}
+                            </Box>
+                          </div>
+                        </dd>
+                      </div>
+
+                      <div className="overflow-hidden rounded-lg bg-white px-4 py-5 border border-theme-pan-navy sm:p-6">
+                        <dt className="truncate text-sm font-bold text-theme-pan-navy">
+                          USDC
+                        </dt>
+                        <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
+                          {" "}
+                          <span className=" ">
+                            {displayFromWei(fundUsdcBalance, 2, 6)}
+                          </span>
+                          <div className="inline-flex pl-2 translate-y-1.5 justify-start">
+                            <Box className="justify-start text-left " mt="16px">
+                              <Image
+                                height={["35", "35"]}
+                                borderRadius={"25"}
+                                opacity={"100%"}
+                                src={USDC.image}
+                                alt="Chest Icon"
+                              />{" "}
+                            </Box>
+                          </div>
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+                    <div className="overflow-hidden rounded-lg bg-theme-white  px-4 py-5 border border-theme-pan-navy sm:p-6">
+                      <dt className="truncate text-md font-medium text-theme-pan-navy">
+                        Total Voters
                       </dt>
                       <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
-                        {" "}
-                        <span className=" ">
-                          {displayFromWei(fundWethBalance, 2, 18)}
-                        </span>
-                        <div className="inline-flex pr-2 translate-y-1.5 justify-start">
-                          <Box className="justify-start text-left " mt="16px">
-                            <Image
-                              height={["35", "35"]}
-                              borderRadius={"25"}
-                              opacity={"100%"}
-                              src={ETH.image}
-                              alt="Chest Icon"
-                            />{" "}
-                          </Box>
-                        </div>
+                        {totalVotes}
                       </dd>
                     </div>
 
-                    <div className="overflow-hidden rounded-lg bg-white px-4 py-5 border border-theme-pan-navy sm:p-6">
-                      <dt className="truncate text-sm font-bold text-theme-pan-navy">
-                        USDC
+                    <div className="overflow-hidden rounded-lg bg-theme-white  px-4 py-5 border border-theme-pan-navy sm:p-6">
+                      <dt className="truncate text-md font-medium text-theme-pan-navy">
+                        Total Bullish
                       </dt>
                       <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
-                        {" "}
-                        <span className=" ">
-                          {displayFromWei(fundUsdcBalance, 2, 6)}
-                        </span>
-                        <div className="inline-flex pl-2 translate-y-1.5 justify-start">
-                          <Box className="justify-start text-left " mt="16px">
-                            <Image
-                              height={["35", "35"]}
-                              borderRadius={"25"}
-                              opacity={"100%"}
-                              src={USDC.image}
-                              alt="Chest Icon"
-                            />{" "}
-                          </Box>
-                        </div>
+                        {totalBullish}
+                      </dd>
+                    </div>
+
+                    <div className="overflow-hidden rounded-lg bg-theme-white  px-4 py-5 border border-theme-pan-navy sm:p-6">
+                      <dt className="truncate text-md font-medium text-theme-pan-navy">
+                        Total Bearish
+                      </dt>
+                      <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
+                        {totalBearish}
                       </dd>
                     </div>
                   </dl>
-                </div>
+                </>
               ) : (
                 <> </>
               )}
-
-              <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
-                <div className="overflow-hidden rounded-lg bg-theme-white  px-4 py-5 border border-theme-pan-navy sm:p-6">
-                  <dt className="truncate text-md font-medium text-theme-pan-navy">
-                    Total Voters
-                  </dt>
-                  <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
-                    {totalVotes}
-                  </dd>
-                </div>
-
-                <div className="overflow-hidden rounded-lg bg-theme-white  px-4 py-5 border border-theme-pan-navy sm:p-6">
-                  <dt className="truncate text-md font-medium text-theme-pan-navy">
-                    Total Bullish
-                  </dt>
-                  <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
-                    {totalBullish}
-                  </dd>
-                </div>
-
-                <div className="overflow-hidden rounded-lg bg-theme-white  px-4 py-5 border border-theme-pan-navy sm:p-6">
-                  <dt className="truncate text-md font-medium text-theme-pan-navy">
-                    Total Bearish
-                  </dt>
-                  <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
-                    {totalBearish}
-                  </dd>
-                </div>
-              </dl>
 
               <a
                 href={CURSED_FUND_ARBISCAN}
