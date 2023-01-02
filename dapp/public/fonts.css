@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "Morion";
+  src: url("Morion/Morion-Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("Morion/Morion-Bold.otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("Morion/Morion-Semibold.otf");
+  font-weight: bolder;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("Morion/Morion-Light.otf");
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Morion";
+  src: url("Morion/Morion-Thin.otf");
+  font-weight: thin;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Wigrum";
+  src: url("Wigrum/wigrumweb-bold.eot") format("embedded-opentype"),
+    url("Wigrum/wigrumweb-bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wigrum";
+  src: url("Wigrum/wigrumweb-bolditalic.eot") format("embedded-opentype"),
+    url("Wigrum/wigrumweb-bolditalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Wigrum";
+  src: url("Wigrum/wigrumweb-italic.eot") format("embedded-opentype"),
+    url("Wigrum/wigrumweb-italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Wigrum";
+  src: url("Wigrum/wigrumweb-light.eot") format("embedded-opentype"),
+    url("Wigrum/wigrumweb-light.woff") format("woff");
+  font-weight: lighter;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wigrum";
+  src: url("Wigrum/wigrumweb-lightitalic.eot") format("embedded-opentype"),
+    url("Wigrum/wigrumweb-lightitalic.woff") format("woff");
+  font-weight: lighter;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Wigrum";
+  src: url("Wigrum/wigrumweb-medium.eot") format("embedded-opentype"),
+    url("Wigrum/wigrumweb-medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wigrum";
+  src: url("Wigrum/wigrumweb-mediumitalic.eot") format("embedded-opentype"),
+    url("Wigrum/wigrumweb-mediumitalic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Wigrum";
+  src: url("Wigrum/wigrumweb-regular.eot") format("embedded-opentype"),
+    url("Wigrum/wigrumweb-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,42 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+
+  "parser": "@typescript-eslint/parser",
+
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "alwaysTryTypes": true,
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+
+  "plugins": ["simple-import-sort", "react", "unused-imports"]
+}
