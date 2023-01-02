@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="text-center justify-center ">
       <div>
         <a
-          href="https://cursed-fund.canny.io/feature-requests"
+          href="https://github.com/ADWilkinson/cursed-fund/discussions"
           target={"_blank"}
           rel={"noreferrer"}
         >
@@ -11,7 +11,7 @@ const Footer = () => {
         </a>
         &nbsp; | &nbsp;
         <a
-          href="https://cursed-fund.canny.io/bugs"
+          href="https://github.com/ADWilkinson/cursed-fund/issues"
           target={"_blank"}
           rel={"noreferrer"}
         >
