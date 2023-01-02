@@ -22,6 +22,7 @@ import {
   DBL_MINIMUM,
 } from "constants/index";
 import Footer from "components/Footer";
+import ConnectButton from "components/header/ConnectButton";
 
 const HomePage = () => {
   const { library } = useEthers();
@@ -152,7 +153,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="w-full items-center justify-between p-6 border-none space-x-6">
-            {chainId && chainId === ARBITRUM.chainId ? (
+            {account && chainId && chainId === ARBITRUM.chainId ? (
               <div className="text-theme-pan-navy">
                 <div>
                   {parseFloat(dblBalance) < DBL_MINIMUM ? (
@@ -296,7 +297,7 @@ const HomePage = () => {
                   </>
                 )}
               </div>
-            ) : (
+            ) : account && chainId ? (
               <>
                 <div className=" px-2 pb-4 pt-4 sm:px-4">
                   <h3 className="text-xl leading-6 font-morion font-semibold text-theme-pan-navy">
@@ -322,7 +323,7 @@ const HomePage = () => {
                   </>
                 </div>
               </>
-            )}
+              ) : <div className="justify-center text-center flex"><ConnectButton></ConnectButton></div>}
           </div>
         </div>
 
