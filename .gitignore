@@ -23,3 +23,6 @@ dapp/npm-debug.log*
 dapp/yarn-debug.log*
 dapp/yarn-error.log*
 dapp/.yarn/*
+
+# Local Netlify folder
+.netlify
