@@ -304,8 +304,7 @@ const ControlExperiment = () => {
                     network.
                   </p>
                   <p>
-                    Please switch network to vote your market sentiment using
-                    $DBL.
+                    Please switch network to capture the point.
                   </p>
                   <>
                     <button
