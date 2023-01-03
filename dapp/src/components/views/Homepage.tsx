@@ -134,7 +134,7 @@ const HomePage = () => {
         />
 
         {/* SENTIMENT VOTE  */}
-        <div className="block col-span-1 w-1/2 m-auto bg-theme-pan-champagne border-t border-b border-theme-pan-navy  divide-y divide-theme-pan-navy">
+        <div className="block col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne border-t border-b border-theme-pan-navy  divide-y divide-theme-pan-navy">
           <div className="block border-none">
             <p className="text-xl text-theme-pan-sky pt-6 font-bold  m-auto text-center justify-center">
               10,000 USDC to allocate
@@ -326,7 +326,7 @@ const HomePage = () => {
         </div>
 
         {/* STATISTICS & REBALANCING  */}
-        <div className="block mt-2 border-b border-theme-pan-navy col-span-1 w-1/2 m-auto bg-theme-pan-champagne mb-3 divide-y divide-theme-pan-navy">
+        <div className="block mt-2 border-b border-theme-pan-navy col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne mb-3 divide-y divide-theme-pan-navy">
           <div className="w-full items-center justify-between p-6 space-x-6">
             <div>
               <h3 className="text-lg font-bold leading-6 text-theme-pan-navy">
@@ -424,7 +424,7 @@ const HomePage = () => {
               <a
                 href={CURSED_FUND_ARBISCAN}
                 target={"_blank"}
-                className="mx-auto mt-6  text-center py-2 justify-center flex hover:opacity-70 items-center rounded-xl bg-theme-pan-navy  px-2.5 text-sm font-medium text-theme-pan-champagne" rel="noreferrer"
+                className="mx-auto mt-6 overflow-hidden  text-center py-2 justify-center flex hover:opacity-70 items-center rounded-xl bg-theme-pan-navy  px-2.5 text-sm font-medium text-theme-pan-champagne" rel="noreferrer"
               >
                 arbiscan.io/address/{CURSED_FUND_ADDRESS}
               </a>
