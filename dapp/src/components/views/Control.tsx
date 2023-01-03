@@ -412,7 +412,7 @@ const ControlExperiment = () => {
               </p>
 
               <span className=" font-bold inline-flex items-center border-none py-0.5 text-xl ">
-                WETH: {control.isBullish ? '100' : '0'}%
+                WETH: {winnerSentiment ? '100' : '0'}%
               </span>
 
               <div className="inline-flex pr-2 translate-y-1.5 justify-start">
@@ -428,7 +428,7 @@ const ControlExperiment = () => {
               </div>
 
               <span className=" font-bold inline-flex items-center border-none py-0.5 text-xl ">
-                USDC: {!control.isBullish ? '100' : '0'}%
+                USDC: {!winnerSentiment ? '100' : '0'}%
               </span>
 
               <div className="inline-flex pl-2 translate-y-1.5 justify-start">
