@@ -62,7 +62,7 @@ export const useBalance = () => {
     };
 
     fetchAllBalances();
-  }, [account, pendingTxState]);
+  }, [account, pendingTxState, chainId]);
 
   const getBalance = useCallback(
     (tokenSymbol: string): BigNumber | undefined => {

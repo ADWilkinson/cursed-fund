@@ -26,17 +26,15 @@ import ConnectButton from "components/header/ConnectButton";
 
 const HomePage = () => {
   const { library } = useEthers();
-  const { getBalance } = useBalance();
+  const { balances } = useBalance();
   const { account } = useAccount();
   const { chainId, changeNetwork } = useNetwork();
-  const dblBalance = displayFromWei(getBalance(DoubloonToken.symbol));
   const [isBullish, setIsBullish] = useState<boolean | null>(null);
   const [totalVotes, setTotalVotes] = useState<number>(0);
   const [totalBullish, setTotalBullish] = useState<number>(0);
   const [totalBearish, setTotalBearish] = useState<number>(0);
   const [percentBullish, setPercentBullish] = useState<number>(0);
   const [percentBearish, setPercentBearish] = useState<number>(0);
-
   const fundUsdcBalance = useTokenBalance(
     USDC.arbitrumAddress,
     CURSED_FUND_ADDRESS,
@@ -95,10 +93,10 @@ const HomePage = () => {
   }, [account, totalVotes, totalBullish, totalBearish]);
 
   const pushSentiment = async (sentiment: string) => {
-    if (parseFloat(dblBalance) < DBL_MINIMUM) {
-      console.log("Not enough DBL to vote sentiment", dblBalance);
+    if (parseFloat(displayFromWei(balances.doubloonBalance)) < DBL_MINIMUM) {
+      console.log("Not enough DBL to vote sentiment", displayFromWei(balances.doubloonBalance));
     } else {
-      console.log("Balance meets DBL threshold to vote sentiment", dblBalance);
+      console.log("Balance meets DBL threshold to vote sentiment", displayFromWei(balances.doubloonBalance));
       await signText("I am voting " + sentiment + " for Cursed Fund");
       try {
         if (sentiment === BULLISH) {
@@ -156,12 +154,12 @@ const HomePage = () => {
             {account && chainId && chainId === ARBITRUM.chainId ? (
               <div className="text-theme-pan-navy">
                 <div>
-                  {parseFloat(dblBalance) < DBL_MINIMUM ? (
+                  {parseFloat(displayFromWei(balances.doubloonBalance)) < DBL_MINIMUM ? (
                     <div className="border-t border-b border-theme-pan-navy mb-3">
                       <span className="font-bold inline-flex items-center py-0.5 text-md text-theme-pan-navy">
                         Insufficient Balance:{" "}
                         <span className=" pl-2 text-theme-sky">
-                          {parseFloat(dblBalance).toFixed(2)}
+                          {parseFloat(displayFromWei(balances.doubloonBalance)).toFixed(2)}
                         </span>
                         <Box
                           className="justify-start  pl-2  text-left "
@@ -188,7 +186,7 @@ const HomePage = () => {
                 </div>
                 <span
                   className={
-                    parseFloat(dblBalance) < DBL_MINIMUM ? "opacity-50" : ""
+                    parseFloat(displayFromWei(balances.doubloonBalance)) < DBL_MINIMUM ? "opacity-50" : ""
                   }
                 >
                   <h3 className="text-lg font-bold leading-6 text-theme-pan-navy pb-3">
@@ -214,7 +212,7 @@ const HomePage = () => {
                   </div>
                   <div className="m-auto flex justify-center py-2">
                     <button
-                      disabled={parseFloat(dblBalance) < DBL_MINIMUM}
+                      disabled={parseFloat(displayFromWei(balances.doubloonBalance)) < DBL_MINIMUM}
                       onClick={() => pushSentiment(BULLISH)}
                       type="button"
                       className="inline-flex  mx-2 items-center rounded-xl border disabled:bg-theme-pan-navy disabled:opacity-70 border-transparent bg-theme-pan-sky px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none "
@@ -222,7 +220,7 @@ const HomePage = () => {
                       Bullish
                     </button>
                     <button
-                      disabled={parseFloat(dblBalance) < DBL_MINIMUM}
+                      disabled={parseFloat(displayFromWei(balances.doubloonBalance)) < DBL_MINIMUM}
                       onClick={() => pushSentiment(BEARISH)}
                       type="button"
                       className="inline-flex  mx-2 items-center rounded-xl border border-transparent disabled:bg-theme-pan-navy disabled:opacity-70 bg-theme-pan-navy px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none"
@@ -231,7 +229,7 @@ const HomePage = () => {
                     </button>
                   </div>
 
-                  {parseFloat(dblBalance) < DBL_MINIMUM ? (
+                  {parseFloat(displayFromWei(balances.doubloonBalance)) < DBL_MINIMUM ? (
                     <> </>
                   ) : (
                     <>
@@ -273,14 +271,14 @@ const HomePage = () => {
                     development & the DBL/WETH pool.
                   </p>
                 </span>
-                {parseFloat(dblBalance) < DBL_MINIMUM ? (
+                {parseFloat(displayFromWei(balances.doubloonBalance)) < DBL_MINIMUM ? (
                   <></>
                 ) : (
                   <>
                     <span className=" font-bold inline-flex items-center rounded-full py-0.5 text-md text-theme-pan-navy">
                       Balance:{" "}
                       <span className="text-theme-sky pl-2">
-                        {parseFloat(dblBalance).toFixed(2)}
+                        {parseFloat(displayFromWei(balances.doubloonBalance)).toFixed(2)}
                       </span>
                     </span>{" "}
                     <div className="inline-flex pl-1 translate-y-1.5 justify-start">
