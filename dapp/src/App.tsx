@@ -4,7 +4,7 @@ import Header from "components/Header";
 import { useToast } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { SUPPORTED_CHAINS } from "constants/chains";
-import HomePage from "components/views/Homepage";
+import HomePage from "components/Homepage";
 
 const App = () => {
   const { notifications } = useNotifications();

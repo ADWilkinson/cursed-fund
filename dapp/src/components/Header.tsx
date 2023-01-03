@@ -19,7 +19,9 @@ const Header = () => {
                 alt="logo"
               />
             </Link>
-            <div className="hidden ml-10 space-x-8 lg:block"></div>
+            <div className="hidden ml-10 space-x-8 lg:block">
+  
+            </div>
           </div>
           <div className="md:ml-10 space-x-4">
             <ConnectButton />

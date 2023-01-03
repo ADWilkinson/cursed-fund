@@ -9,7 +9,7 @@ import { useAccount } from "hooks/useAccount";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "index";
 import { useBalance } from "hooks/useBalance";
-import { DoubloonToken, ETH, USDC, WETH } from "constants/tokens";
+import {  ETH, USDC, WETH } from "constants/tokens";
 import { useEthers, useTokenBalance } from "@usedapp/core";
 import dbl from "assets/brand/dbl.png";
 import { collection, getDocs } from "firebase/firestore";
@@ -21,10 +21,9 @@ import {
   CURSED_FUND_ARBISCAN,
   DBL_MINIMUM,
 } from "constants/index";
-import Footer from "components/Footer";
 import ConnectButton from "components/header/ConnectButton";
 
-const HomePage = () => {
+const GalleonExperiment = () => {
   const { library } = useEthers();
   const { balances } = useBalance();
   const { account } = useAccount();
@@ -129,7 +128,7 @@ const HomePage = () => {
     <Page>
       <>
         <PageTitle
-          title="Cursed Fund"
+          title="Royal Fortune Fund"
           subtitle="A social experiment within Galleon & Cursed DAO"
         />
 
@@ -476,12 +475,9 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-
-
-        <Footer></Footer>
       </>
     </Page>
   );
 };
 
-export default HomePage;
+export default GalleonExperiment;
