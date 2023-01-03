@@ -31,6 +31,16 @@ const ControlExperiment = () => {
   const [isBullish, setIsBullish] = useState<boolean | null>(null);
   const [control, setControl] = useState<any>({ isBullish: isBullish, account: '', txStatus: '', timestamp: 0 });
   const { sendTransaction, state } = useSendTransaction()
+  const [currentWinner, setCurrentWinner] = useState<string>('');
+  const [winnerSentiment, setWinnerSentiment] = useState<boolean>(false);
+
+  const getMostFrequent = (arr: any[]) => {
+    const hashmap = arr.reduce((acc, val) => {
+      acc[val] = (acc[val] || 0) + 1;
+      return acc;
+    }, {});
+    return Object.keys(hashmap).reduce((a, b) => (hashmap[a] > hashmap[b] ? a : b));
+  }
 
   useEffect(() => {
     try {
@@ -39,12 +49,31 @@ const ControlExperiment = () => {
           doc(db, CONTROL_COLLECTION, state.transaction.hash),
           { isBullish: isBullish, account: account, timestamp: Date.now() },
           { merge: true }
-        );
+        ).then(() => {
+          console.log("Transaction successfully stored")
+        })
       }
     } catch (error) {
       console.log(error);
     }
   }, [state])
+
+  useEffect(() => {
+    getDocs(collection(db, CONTROL_COLLECTION)).then((snapshot) => {
+      const accountData = snapshot.docs.map((doc: any) => doc.data());
+      const accountNames = accountData.map((data: any) => data.account);
+      const winner = getMostFrequent(accountNames);
+      setCurrentWinner(winner);
+
+      const sentiment = accountData
+        .filter((data: any) => data.account === winner)
+        .sort((x: any, y: any) => {
+          return x.timestamp - y.timestamp;
+        })
+        .pop().isBullish;
+      setWinnerSentiment(sentiment);
+    });
+  }, [account, state, chainId])
 
   const fundUsdcBalance = useTokenBalance(
     USDC.arbitrumAddress,
@@ -199,14 +228,17 @@ const ControlExperiment = () => {
                   <>
                     <span className="flex pb-3  m-auto justify-center items-center rounded-xl mb-2 px-3 py-0.5 text-sm font-medium text-theme-pan-sky">
 
-                      <span className="p-4 rounded-2xl bg-theme-white mt-4 border border-theme-pan-sky">
+                      <span className="p-4 rounded-2xl bg-theme-white mt-4 border border-theme-pan-navy">
                         {control.account !== ''
                           ? <>
                             <p>
                               Controller: <span className="font-bold animate animate-pulse ">{control.account.slice(0, 6)}...{control.account.slice(control.account.length - 4, control.account.length)}</span>
                             </p>
                             <p>Controller Sentiment: <span className="font-bold animate animate-pulse ">{control.isBullish ? 'Bullish' : 'Bearish'}</span></p>
-                            <p>Reward Pot:    {parseFloat(displayFromWei(fundWethBalance, 2, 18)) > parseFloat(displayFromWei(fundUsdcBalance, 2, 6)) ? <>{(parseFloat(displayFromWei(fundWethBalance, 2, 18)) / 100).toFixed(3)} WETH</> : <>{(parseFloat(displayFromWei(fundUsdcBalance, 2, 6)) / 100).toFixed(2)} USDC</>}</p>
+                            {currentWinner !== '' ? <>    <br></br>
+                              <p>Leader: <span className="font-bold">{currentWinner.slice(0, 6)}...{currentWinner.slice(currentWinner.length - 4, currentWinner.length)}</span></p>
+                              <p>Leader Sentiment <span className="font-bold">{winnerSentiment ? 'Bullish' : 'Bearish'}</span></p>
+                              <p>Potential Reward: {parseFloat(displayFromWei(fundWethBalance, 2, 18)) > parseFloat(displayFromWei(fundUsdcBalance, 2, 6)) ? <>{(parseFloat(displayFromWei(fundWethBalance, 2, 18)) / 100).toFixed(3)} WETH</> : <>{(parseFloat(displayFromWei(fundUsdcBalance, 2, 6)) / 100).toFixed(2)} USDC</>}</p></> : <></>}
                           </>
                           : <></>}
                       </span>
