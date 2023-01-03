@@ -190,7 +190,7 @@ const ControlExperiment = () => {
                   </h3>
                   <h1 className="">Ahoy ye no good sea rat,</h1>
                   <p className="">
-                    Control the point by setting your $ETH market sentiment below and sending 0.001 ETH to the fund. The deckhand with the highest captures by the end of the week wins 1% of the fund.
+                    Control the point by setting your $ETH market sentiment below at a 0.001 ETH cost. The deckhand with the most captures by the end of the week wins 1% of the fund.
                   </p>
                   <div className="flex m-auto justify-center">
                     <Box
@@ -249,11 +249,13 @@ const ControlExperiment = () => {
                     Rules of Engagement
                   </h3>
                   <p className="pb-1">
-                    <span className="font-bold">- Every Sunday at 12:00 (UTC)</span> a snapshot will be taken, crowning the deckhand with the most point captures.
-
+                    <span className="font-bold">Every Sunday at 12:00 (UTC)</span> a snapshot will be taken, crowning the deckhand with the most point captures.
+                    <span className="font-bold"></span> The winners sentiment will be used to determine the direction of the fund, <span className="font-bold">100% ETH or 100% USDC.
+                    </span>
                   </p>
+                  <br></br>
                   <p className="pb-1">
-                    <span className="font-bold">- 1%</span> of the {" "}
+                    After the snapshot is taken,{" "}<span className="font-bold">1%</span> of the {" "}
                     <a
                       href={CONTROL_ARBISCAN}
                       target="_blank"
@@ -261,11 +263,10 @@ const ControlExperiment = () => {
                     >
                       fund
                     </a>{" "}
-                    will be sent to the winner in either USDC or WETH.
+                    will be sent to the winner in either USDC or WETH. This is an experiment on balancing novel inflows and outflows of the fund to create sustainability.
                   </p>
                   <p className="pb-1">
-                    <span className="font-bold">-</span> The winners sentiment will be used to determine the direction of the fund, <span className="font-bold">100% ETH or 100% USDC.
-                    </span>
+                   
                   </p>
                 </span>
                 {displayFromWei(balances.ethBalance, 3) ? (
