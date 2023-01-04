@@ -14,6 +14,7 @@ import { getFirestore } from "firebase/firestore";
 import GalleonExperiment from "components/views/Galleon";
 import ControlExperiment from "components/views/Control";
 import Hero from "components/hero/Hero";
+import Snapshots from "components/views/Snapshots";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -70,6 +71,22 @@ const router = createBrowserRouter([
     element: (
       <App>
         <ControlExperiment />
+      </App>
+    ),
+  },
+  {
+    path: "/snapshots",
+    element: (
+      <App>
+        <Snapshots />
+      </App>
+    ),
+  },
+  {
+    path: "/*",
+    element: (
+      <App>
+        <Hero />
       </App>
     ),
   },

@@ -23,6 +23,9 @@ const Header = () => {
               <span className="text-lg  text-theme-oldlace hover:text-theme-champagne">
                 <Link to="/">Experiments</Link>
               </span>
+              <span className="text-lg  text-theme-oldlace hover:text-theme-champagne">
+                <Link to="/snapshots">Snapshots</Link>
+              </span>
               {/* <span className="text-lg  text-theme-oldlace hover:text-theme-champagne">
                 <Link to="/royalfortune">Royal Fortune</Link>
               </span>
@@ -41,6 +44,12 @@ const Header = () => {
             href="/"
           >
             Experiments
+          </a>
+          <a
+            className="text-base  text-theme-oldlace hover:text-theme-champagne"
+            href="/snapshots"
+          >
+            Snapshots
           </a>
           {/* <a
             className="text-base  text-theme-oldlace hover:text-theme-champagne"
