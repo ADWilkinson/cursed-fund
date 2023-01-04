@@ -1,15 +1,16 @@
-import { Outlet } from "react-router-dom";
 import { useEthers, useNotifications } from "@usedapp/core";
 import Header from "components/Header";
 import { useToast } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { SUPPORTED_CHAINS } from "constants/chains";
-import HomePage from "components/Homepage";
+import Footer from "components/Footer";
+import Page from "components/Page";
 
-const App = () => {
+const App = (props) => {
   const { notifications } = useNotifications();
   const { chainId } = useEthers();
   const toast = useToast();
+
   useEffect(() => {
     if (notifications.length === 0) return;
 
@@ -54,7 +55,12 @@ const App = () => {
   return (
     <>
       <Header />
-      <HomePage />
+      <Page>
+        <>
+          {props.children}
+          <Footer></Footer>
+        </>
+      </Page>
     </>
   );
 };

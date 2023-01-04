@@ -26,18 +26,6 @@ const Footer = () => {
           GitHub
         </a>
       </div>
-      <div>
-        <span role="img" aria-label="sheep">
-          Built for the Bilgerats by{" "}
-        </span>
-        <a
-          href="https://twitter.com/andrew_eth"
-          className="text-theme-pan-sky"
-          target="blank"
-        >
-          @andrew_eth
-        </a>
-      </div>
     </footer>
   );
 };

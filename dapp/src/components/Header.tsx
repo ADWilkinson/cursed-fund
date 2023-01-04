@@ -20,14 +20,41 @@ const Header = () => {
               />
             </Link>
             <div className="hidden ml-10 space-x-8 lg:block">
-  
+              <span className="text-lg  text-theme-oldlace hover:text-theme-champagne">
+                <Link to="/">Experiments</Link>
+              </span>
+              {/* <span className="text-lg  text-theme-oldlace hover:text-theme-champagne">
+                <Link to="/royalfortune">Royal Fortune</Link>
+              </span>
+              <span className="text-lg  text-theme-oldlace hover:text-theme-champagne">
+                <Link to="/control">Control Point</Link>
+              </span> */}
             </div>
           </div>
           <div className="md:ml-10 space-x-4">
             <ConnectButton />
           </div>
         </div>
-        <div className="py-4 flex flex-wrap justify-center space-x-6 lg:hidden"></div>
+        <div className="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
+          <a
+            className="text-base  text-theme-oldlace hover:text-theme-champagne"
+            href="/"
+          >
+            Experiments
+          </a>
+          {/* <a
+            className="text-base  text-theme-oldlace hover:text-theme-champagne"
+            href="/royalfortune"
+          >
+            Royal Fortune
+          </a>
+          <a
+            className="text-base  text-theme-oldlace hover:text-theme-champagne"
+            href="/control"
+          >
+            Control
+          </a> */}
+        </div>
       </nav>
     </header>
   );

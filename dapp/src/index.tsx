@@ -1,10 +1,4 @@
-import React from "react";
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "App";
 import theme from "theme";
 import { createRoot } from "react-dom/client";
@@ -17,6 +11,9 @@ import { MarketDataProvider } from "providers/MarketData/MarketDataProvider";
 import "./index.css";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import GalleonExperiment from "components/views/Galleon";
+import ControlExperiment from "components/views/Control";
+import Hero from "components/hero/Hero";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -54,7 +51,27 @@ const Providers = (props: { children: any }) => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <App>
+        <Hero />
+      </App>
+    ),
+  },
+  {
+    path: "/royalfortune",
+    element: (
+      <App>
+        <GalleonExperiment />
+      </App>
+    ),
+  },
+  {
+    path: "/control",
+    element: (
+      <App>
+        <ControlExperiment />
+      </App>
+    ),
   },
 ]);
 
