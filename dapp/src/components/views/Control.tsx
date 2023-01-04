@@ -61,7 +61,9 @@ const ControlExperiment = () => {
   useEffect(() => {
     getDocs(collection(db, CONTROL_COLLECTION)).then((snapshot) => {
       const accountData = snapshot.docs.map((doc: any) => doc.data());
-      const accountNames = accountData.map((data: any) => data.account);
+      const accountNames = accountData.sort((x: any, y: any) => {
+        return x.timestamp - y.timestamp;
+      }).map((data: any) => data.account);
       const winner = getMostFrequent(accountNames);
       setCurrentWinner(winner);
 

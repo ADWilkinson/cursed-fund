@@ -148,7 +148,11 @@ exports.scheduledControlWinner = functions.pubsub
         return querySnapshot.docs.map((doc: any) => doc.data());
       });
 
-    const accountNames = accountData.map((data: any) => data.account);
+    const accountNames = accountData
+      .sort((x: any, y: any) => {
+        return x.timestamp - y.timestamp;
+      })
+      .map((data: any) => data.account);
     const winner = getMostFrequent(accountNames);
     const id = `${winner.slice(0, 6)}...${winner.slice(winner.length - 4, winner.length)}`;
 
