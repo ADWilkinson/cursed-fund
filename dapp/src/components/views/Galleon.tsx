@@ -22,6 +22,7 @@ import {
 } from "constants/index";
 import ConnectButton from "components/header/ConnectButton";
 import { Link } from "react-router-dom";
+import { useMarketData } from "providers/MarketData/MarketDataProvider";
 
 const GalleonExperiment = () => {
   const { library } = useEthers();
@@ -34,6 +35,7 @@ const GalleonExperiment = () => {
   const [totalBearish, setTotalBearish] = useState<number>(0);
   const [percentBullish, setPercentBullish] = useState<number>(0);
   const [percentBearish, setPercentBearish] = useState<number>(0);
+  const { eth } = useMarketData();
   const fundUsdcBalance = useTokenBalance(
     USDC.arbitrumAddress,
     CURSED_FUND_ADDRESS,
@@ -367,6 +369,18 @@ const GalleonExperiment = () => {
                   <h3 className="text-lg font-medium leading-6 text-theme-pan-navy">
                     Current Holdings
                   </h3>
+                  <p className="text-md pt-3 text-center">
+                    Total Fund Value:{" "}
+                    <span className="font-bold">
+                      $
+                      {eth &&
+                        fundWethBalance &&
+                        fundUsdcBalance &&
+                        parseFloat(displayFromWei(fundWethBalance, 2, 18)) *
+                          eth +
+                          parseFloat(displayFromWei(fundUsdcBalance, 2, 6))}
+                    </span>
+                  </p>
                   <dl className="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 justify-center">
                     <div className="overflow-hidden rounded-lg bg-theme-white px-4 py-5 border border-theme-pan-navy sm:p-6">
                       <dt className="truncate text-sm font-bold text-theme-pan-navy">

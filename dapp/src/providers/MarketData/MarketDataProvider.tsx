@@ -7,20 +7,14 @@ import {
 } from "react";
 
 import { ETH, USDC, WETH, DoubloonToken } from "constants/tokens";
-import { fetchHistoricalTokenMarketData } from "utils/coingeckoApi";
-
-export interface TokenMarketDataValues {
-  prices?: number[][];
-  hourlyPrices?: number[][];
-  marketcaps?: number[][];
-  volumes?: number[][];
-}
+import { fetchCoingeckoTokenPrice } from "utils/coingeckoApi";
+import { ARBITRUM, MAINNET } from "constants/chains";
 
 export interface TokenContext {
-  eth?: TokenMarketDataValues;
-  weth?: TokenMarketDataValues;
-  usdc?: TokenMarketDataValues;
-  dbl?: TokenMarketDataValues;
+  eth?: number;
+  weth?: number;
+  usdc?: number;
+  dbl?: number;
 
   selectLatestMarketData: (...args: any) => number;
 }
@@ -44,10 +38,10 @@ export const MarketDataProvider = (props: { children: any }) => {
 
   const fetchMarketData = useCallback(async () => {
     const marketData = await Promise.all([
-      fetchHistoricalTokenMarketData(ETH.coingeckoId),
-      fetchHistoricalTokenMarketData(WETH.coingeckoId),
-      fetchHistoricalTokenMarketData(USDC.coingeckoId),
-      fetchHistoricalTokenMarketData(DoubloonToken.coingeckoId),
+      fetchCoingeckoTokenPrice(ETH.address, MAINNET.chainId, "usd"),
+      fetchCoingeckoTokenPrice(WETH.address, MAINNET.chainId, "usd"),
+      fetchCoingeckoTokenPrice(USDC.address, MAINNET.chainId, "usd"),
+      fetchCoingeckoTokenPrice(DoubloonToken.address, ARBITRUM.chainId, "usd"),
     ]);
 
     setEthMarketData(marketData[0]);

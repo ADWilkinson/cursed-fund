@@ -23,6 +23,7 @@ import {
 import ConnectButton from "components/header/ConnectButton";
 import { utils } from "ethers";
 import { Link } from "react-router-dom";
+import { useMarketData } from "providers/MarketData/MarketDataProvider";
 
 const ControlExperiment = () => {
   const { balances } = useBalance();
@@ -38,7 +39,8 @@ const ControlExperiment = () => {
   const { sendTransaction, state } = useSendTransaction();
   const [currentWinner, setCurrentWinner] = useState<string>("");
   const [winnerSentiment, setWinnerSentiment] = useState<boolean>(false);
-
+  const [totalCaptures, setTotalCaptures] = useState<number>(0);
+  const { eth } = useMarketData();
   const getMostFrequent = (arr: any[]) => {
     const hashmap = arr.reduce((acc, val) => {
       acc[val] = (acc[val] || 0) + 1;
@@ -83,6 +85,8 @@ const ControlExperiment = () => {
         })
         .pop().isBullish;
       setWinnerSentiment(sentiment);
+
+      setTotalCaptures(accountNames.length);
     });
   }, [account, state, chainId]);
 
@@ -435,6 +439,18 @@ const ControlExperiment = () => {
                   <h3 className="text-lg font-medium leading-6 text-theme-pan-navy">
                     Current Holdings
                   </h3>
+                  <p className="text-md pt-3 text-center">
+                    Total Fund Value:{" "}
+                    <span className="font-bold">
+                      $
+                      {eth &&
+                        fundWethBalance &&
+                        fundUsdcBalance &&
+                        parseFloat(displayFromWei(fundWethBalance, 2, 18)) *
+                          eth +
+                          parseFloat(displayFromWei(fundUsdcBalance, 2, 6))}
+                    </span>
+                  </p>
                   <dl className="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 justify-center">
                     <div className="overflow-hidden rounded-lg bg-theme-white px-4 py-5 border border-theme-pan-navy sm:p-6">
                       <dt className="truncate text-sm font-bold text-theme-pan-navy">
@@ -479,6 +495,58 @@ const ControlExperiment = () => {
                             />{" "}
                           </Box>
                         </div>
+                      </dd>
+                    </div>
+                  </dl>
+                  <h3 className="text-lg font-medium leading-6 text-theme-pan-navy">
+                    This Round
+                  </h3>
+                  <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    <div className="overflow-hidden rounded-lg bg-theme-white  px-4 py-5 border border-theme-pan-navy sm:p-6">
+                      <dt className="truncate text-md font-medium text-theme-pan-navy">
+                        Total Captures
+                      </dt>
+                      <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
+                        {totalCaptures}
+                      </dd>
+                    </div>
+
+                    <div className="overflow-hidden rounded-lg bg-theme-white  px-4 py-5 border border-theme-pan-navy sm:p-6">
+                      <dt className="truncate text-md font-medium text-theme-pan-navy">
+                        ETH Accumulated
+                      </dt>
+                      <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
+                        {totalCaptures * 0.001}
+                      </dd>
+                    </div>
+                    <div className="overflow-hidden rounded-lg bg-theme-white  px-4 py-5 border border-theme-pan-navy sm:p-6">
+                      <dt className="truncate text-md font-medium text-theme-pan-navy">
+                        Inflows - Reward ($)
+                      </dt>
+                      <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
+                        {parseFloat(displayFromWei(fundWethBalance, 2, 18)) >
+                        parseFloat(displayFromWei(fundUsdcBalance, 2, 6)) ? (
+                          <>
+                            {(
+                              totalCaptures * 0.001 * eth -
+                              (parseFloat(
+                                displayFromWei(fundWethBalance, 2, 18)
+                              ) /
+                                100) *
+                                eth
+                            ).toFixed(2)}
+                          </>
+                        ) : (
+                          <>
+                            {(
+                              totalCaptures * 0.001 * eth -
+                              parseFloat(
+                                displayFromWei(fundUsdcBalance, 2, 6)
+                              ) /
+                                100
+                            ).toFixed(2)}
+                          </>
+                        )}
                       </dd>
                     </div>
                   </dl>
