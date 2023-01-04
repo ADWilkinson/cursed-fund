@@ -38,7 +38,8 @@ const Hero = () => {
               <a
                 target={"_blank"}
                 className="text-theme-pan-sky"
-                href="https://twitter.com/andrew_eth" rel="noreferrer"
+                href="https://twitter.com/andrew_eth"
+                rel="noreferrer"
               >
                 @andrew_eth{" "}
               </a>
