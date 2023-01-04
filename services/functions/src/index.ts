@@ -136,7 +136,7 @@ exports.onControlCreate = functions.firestore.document("/CONTROL/{documentId}").
   }
 });
 
-exports.scheduledControlWinner = functions.pubsub
+exports.scheduledControlSnapshot = functions.pubsub
   .schedule("0 12 * * 0")
   .timeZone("UTC")
   .onRun(async (_) => {
@@ -158,12 +158,12 @@ exports.scheduledControlWinner = functions.pubsub
 
     const sentiment = accountData
       .filter((data: any) => data.account === winner)
-      .sort( (x: any, y: any) => {
+      .sort((x: any, y: any) => {
         return x.timestamp - y.timestamp;
       })
       .pop().isBullish;
 
-    await admin.firestore().collection("CONTROL_WINNERS").add({
+    await admin.firestore().collection("CONTROL_SNAPSHOT").add({
       account: winner,
       isBullish: sentiment,
       timestamp: Date.now(),
@@ -186,4 +186,49 @@ exports.scheduledControlWinner = functions.pubsub
     }
 
     await deleteCollection(admin.firestore(), "CONTROL", 100);
+  });
+
+exports.scheduledGalleonSnapshot = functions.pubsub
+  .schedule("0 12 * * 0")
+  .timeZone("UTC")
+  .onRun(async (_) => {
+    const votes = await admin
+      .firestore()
+      .collection("GALLEON")
+      .get()
+      .then((querySnapshot: any) => {
+        return querySnapshot.docs.map((doc: any) => doc.data());
+      });
+
+    const bullish = votes.filter((doc: any) => {
+      return doc.data().isBullish === true;
+    }).length;
+
+    const bearish = votes.filter((doc: any) => {
+      return doc.data().isBullish === false;
+    }).length;
+
+    const percentBullish = Math.round((bullish / votes.length) * 100);
+    const percentBearish = Math.round((bearish / votes.length) * 100);
+
+    await admin.firestore().collection("GALLEON_SNAPSHOT").add({
+      wethPercent: percentBullish,
+      usdcPercent: percentBearish,
+      totalVotes: votes.length,
+      timestamp: Date.now(),
+    });
+
+    const message = `🚨 A snapshot has been taken based on ${votes.length} votes from our deckhands, the Royal Fortune Fund will rebalance to ${percentBullish}% WETH & ${percentBearish}% USDC 🚨`;
+
+    try {
+      const response = await postMessageToDiscord("Cursed Fund Overseer", message);
+      if (response.ok) {
+        functions.logger.info(`Royal Fortune snapshot sent to Discord`);
+      } else {
+        // @ts-ignore
+        throw new Error(response.error);
+      }
+    } catch (error) {
+      functions.logger.error(`Unable to post Royal Fortune snapshot`, error);
+    }
   });
