@@ -41,6 +41,7 @@ const ControlExperiment = () => {
   const [winnerSentiment, setWinnerSentiment] = useState<boolean>(false);
   const [totalCaptures, setTotalCaptures] = useState<number>(0);
   const { eth } = useMarketData();
+
   const getMostFrequent = (arr: any[]) => {
     const hashmap = arr.reduce((acc, val) => {
       acc[val] = (acc[val] || 0) + 1;
@@ -101,6 +102,9 @@ const ControlExperiment = () => {
     { chainId: ARBITRUM.chainId }
   );
 
+  const displayWeth = parseFloat(displayFromWei(fundWethBalance, 2, 18));
+  const displayUsdc = parseFloat(displayFromWei(fundUsdcBalance, 2, 6));
+
   useEffect(() => {
     if (!account) return;
     const controlQuery = query(
@@ -142,8 +146,7 @@ const ControlExperiment = () => {
         subtitle="Capture the point, allocate the fund and wins 1%."
       />
 
-      {/* SENTIMENT VOTE  */}
-      <div className="block col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne border-t border-b border-theme-pan-navy  divide-y divide-theme-pan-navy">
+      <div className="block col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne border-t  border-theme-pan-navy  divide-y divide-theme-pan-navy">
         <div className="block border-none">
           <p className="text-xl text-theme-pan-sky pt-6 font-bold  m-auto text-center justify-center">
             1000 USDC to allocate
@@ -216,9 +219,9 @@ const ControlExperiment = () => {
                     : ""
                 }
               >
-                <h3 className="text-lg font-bold leading-6 text-theme-pan-navy pb-3">
-                  Capture
-                </h3>
+                <h2 className="text-3xl font-bold tracking-tight text-theme-pan-navy py-6 ">
+                  Control
+                </h2>
                 <h1 className="">Ahoy ye no good sea rat,</h1>
                 <p className="">
                   Control the point by setting your $ETH market sentiment below
@@ -344,34 +347,56 @@ const ControlExperiment = () => {
                   </span>
                 </>
 
-                <h3 className="text-lg font-bold leading-6 text-theme-pan-navy pb-3">
+                <h2 className="text-3xl font-bold tracking-tight text-theme-pan-navy py-6 ">
                   Rules of Engagement
-                </h3>
-                <p className="pb-1">
-                  <span className="font-bold">Every Sunday at 12:00 (UTC)</span>{" "}
-                  a snapshot will be taken, crowning the deckhand with the most
-                  point captures.
-                  <span className="font-bold"></span> The winners sentiment will
-                  be used to determine the direction of the fund,{" "}
-                  <span className="font-bold">100% ETH or 100% USDC.</span>
-                </p>
-                <br></br>
-                <p className="pb-1">
-                  After the snapshot is taken,{" "}
-                  <span className="font-bold">1%</span> of the{" "}
-                  <a
-                    href={CONTROL_ARBISCAN}
-                    target="_blank"
-                    className="text-theme-pan-sky hover:opacity-80"
-                    rel="noreferrer"
-                  >
-                    fund
-                  </a>{" "}
-                  will be sent to the winner in either USDC or WETH. This is an
-                  experiment on balancing novel inflows and outflows of the fund
-                  to create sustainability.
-                </p>
-                <p className="pb-1"></p>
+                </h2>
+                <div className="">
+                  <dl className="border-b border-theme-pan-navy pb-3">
+                    <div className="pt-3 ">
+                      <p className="text-base text-theme-pan-navy">
+                        {" "}
+                        <span className="font-bold">
+                          Every Sunday at 12:00 (UTC)
+                        </span>{" "}
+                        a snapshot will be taken, crowning the deckhand with the
+                        most point captures.
+                        <span className="font-bold"></span> The winners
+                        sentiment will be used to determine the direction of the
+                        fund,{" "}
+                        <span className="font-bold">
+                          100% ETH or 100% USDC.
+                        </span>
+                      </p>
+                    </div>
+                  </dl>
+
+                  <dl className=" border-b border-theme-pan-navy pb-3">
+                    <div className="pt-3 ">
+                      After the snapshot is taken,{" "}
+                      <span className="font-bold">1%</span> of the{" "}
+                      <a
+                        href={CONTROL_ARBISCAN}
+                        target="_blank"
+                        className="text-theme-pan-sky font-bold hover:opacity-80"
+                        rel="noreferrer"
+                      >
+                        fund
+                      </a>{" "}
+                      will be sent to the winner in either USDC or WETH. This is
+                      an experiment on balancing novel inflows and outflows of
+                      the fund to create sustainability.
+                    </div>
+                  </dl>
+
+                  <dl className=" pb-3">
+                    <div className="pt-3">
+                      If two or more deckhands have the same amount of points,
+                      the <span className="font-bold">most recent</span> the
+                      winner be determined by the most recent capture of the
+                      point
+                    </div>
+                  </dl>
+                </div>
               </span>
               {displayFromWei(balances.ethBalance, 3) ? (
                 <></>
@@ -426,29 +451,26 @@ const ControlExperiment = () => {
       </div>
 
       {/* STATISTICS & REBALANCING  */}
-      <div className="block mt-2 border-b border-theme-pan-navy col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne mb-3 divide-y divide-theme-pan-navy">
+      <div className="block  border-b border-theme-pan-navy col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne mb-3 divide-y divide-theme-pan-navy">
         <div className="w-full items-center justify-between p-6 space-x-6">
           <div>
-            <h3 className="text-lg font-bold leading-6 text-theme-pan-navy">
+            <h2 className="text-3xl font-bold tracking-tight text-theme-pan-navy py-6 ">
               Statistics & Rebalancing
-            </h3>
-
+            </h2>
             {account ? (
               <>
                 <div className="  ">
                   <h3 className="text-lg font-medium leading-6 text-theme-pan-navy">
                     Current Holdings
                   </h3>
-                  <p className="text-md pt-3 text-center">
+                  <p className="text-md pt-3 text-left">
                     Total Fund Value:{" "}
                     <span className="font-bold">
                       $
                       {eth &&
                         fundWethBalance &&
                         fundUsdcBalance &&
-                        parseFloat(displayFromWei(fundWethBalance, 2, 18)) *
-                          eth +
-                          parseFloat(displayFromWei(fundUsdcBalance, 2, 6))}
+                        displayWeth * eth + displayUsdc}
                     </span>
                   </p>
                   <dl className="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 justify-center">
@@ -524,26 +546,18 @@ const ControlExperiment = () => {
                         Inflows - Reward ($)
                       </dt>
                       <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
-                        {parseFloat(displayFromWei(fundWethBalance, 2, 18)) >
-                        parseFloat(displayFromWei(fundUsdcBalance, 2, 6)) ? (
+                        {displayWeth > displayUsdc ? (
                           <>
                             {(
                               totalCaptures * 0.001 * eth -
-                              (parseFloat(
-                                displayFromWei(fundWethBalance, 2, 18)
-                              ) /
-                                100) *
-                                eth
+                              (displayWeth / 100) * eth
                             ).toFixed(2)}
                           </>
                         ) : (
                           <>
                             {(
                               totalCaptures * 0.001 * eth -
-                              parseFloat(
-                                displayFromWei(fundUsdcBalance, 2, 6)
-                              ) /
-                                100
+                              displayUsdc / 100
                             ).toFixed(2)}
                           </>
                         )}

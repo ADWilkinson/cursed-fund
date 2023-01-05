@@ -47,6 +47,10 @@ const GalleonExperiment = () => {
     { chainId: ARBITRUM.chainId }
   );
 
+  const displayWeth = parseFloat(displayFromWei(fundWethBalance, 2, 18));
+  const displayUsdc = parseFloat(displayFromWei(fundUsdcBalance, 2, 6));
+  const displayDbl = parseFloat(displayFromWei(balances.doubloonBalance));
+
   const signText = async (text: string) => {
     const signer = library.getSigner();
     await signer.signMessage(text);
@@ -94,7 +98,7 @@ const GalleonExperiment = () => {
   }, [account, totalVotes, totalBullish, totalBearish]);
 
   const pushSentiment = async (sentiment: string) => {
-    if (parseFloat(displayFromWei(balances.doubloonBalance)) < DBL_MINIMUM) {
+    if (displayDbl < DBL_MINIMUM) {
       console.log(
         "Not enough DBL to vote sentiment",
         displayFromWei(balances.doubloonBalance)
@@ -146,7 +150,7 @@ const GalleonExperiment = () => {
       />
 
       {/* SENTIMENT VOTE  */}
-      <div className="block col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne border-t border-b border-theme-pan-navy  divide-y divide-theme-pan-navy">
+      <div className="block col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne border-t  border-theme-pan-navy  divide-y divide-theme-pan-navy">
         <div className="block border-none">
           <p className="text-xl text-theme-pan-sky pt-6 font-bold  m-auto text-center justify-center">
             10,000 USDC to allocate
@@ -167,15 +171,12 @@ const GalleonExperiment = () => {
           {account && chainId && chainId === ARBITRUM.chainId ? (
             <div className="text-theme-pan-navy">
               <div>
-                {parseFloat(displayFromWei(balances.doubloonBalance)) <
-                DBL_MINIMUM ? (
+                {displayDbl < DBL_MINIMUM ? (
                   <div className="border-t border-b border-theme-pan-navy mb-3">
                     <span className="font-bold inline-flex items-center py-0.5 text-md text-theme-pan-navy">
                       Insufficient Balance:{" "}
                       <span className=" pl-2 text-theme-sky">
-                        {parseFloat(
-                          displayFromWei(balances.doubloonBalance)
-                        ).toFixed(2)}
+                        {displayDbl.toFixed(2)}
                       </span>
                       <Box
                         className="justify-start  pl-2  text-left "
@@ -200,17 +201,10 @@ const GalleonExperiment = () => {
                   <></>
                 )}
               </div>
-              <span
-                className={
-                  parseFloat(displayFromWei(balances.doubloonBalance)) <
-                  DBL_MINIMUM
-                    ? "opacity-50"
-                    : ""
-                }
-              >
-                <h3 className="text-lg font-bold leading-6 text-theme-pan-navy pb-3">
+              <span className={displayDbl < DBL_MINIMUM ? "opacity-50" : ""}>
+                <h2 className="text-3xl font-bold tracking-tight text-theme-pan-navy py-6 ">
                   Sentiment Vote
-                </h3>
+                </h2>
                 <h1 className="">Deckhand,</h1>
                 <p className="">
                   Are you currently bullish or bearish on $ETH?
@@ -231,10 +225,7 @@ const GalleonExperiment = () => {
                 </div>
                 <div className="m-auto flex justify-center py-2">
                   <button
-                    disabled={
-                      parseFloat(displayFromWei(balances.doubloonBalance)) <
-                      DBL_MINIMUM
-                    }
+                    disabled={displayDbl < DBL_MINIMUM}
                     onClick={() => pushSentiment(BULLISH)}
                     type="button"
                     className="inline-flex  mx-2 items-center rounded-xl border disabled:bg-theme-pan-navy disabled:opacity-70 border-transparent bg-theme-pan-sky px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none "
@@ -242,10 +233,7 @@ const GalleonExperiment = () => {
                     Bullish
                   </button>
                   <button
-                    disabled={
-                      parseFloat(displayFromWei(balances.doubloonBalance)) <
-                      DBL_MINIMUM
-                    }
+                    disabled={displayDbl < DBL_MINIMUM}
                     onClick={() => pushSentiment(BEARISH)}
                     type="button"
                     className="inline-flex  mx-2 items-center rounded-xl border border-transparent disabled:bg-theme-pan-navy disabled:opacity-70 bg-theme-pan-navy px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none"
@@ -254,8 +242,7 @@ const GalleonExperiment = () => {
                   </button>
                 </div>
 
-                {parseFloat(displayFromWei(balances.doubloonBalance)) <
-                DBL_MINIMUM ? (
+                {displayDbl < DBL_MINIMUM ? (
                   <> </>
                 ) : (
                   <>
@@ -278,36 +265,44 @@ const GalleonExperiment = () => {
                   </>
                 )}
 
-                <p className="pb-1">
-                  <span className="font-bold">Every week</span> the sentiment of
-                  our crew is automatically weighted to rebalance a{" "}
-                  <a
-                    href={CURSED_FUND_ARBISCAN}
-                    target="_blank"
-                    className="text-theme-pan-sky hover:opacity-80"
-                    rel="noreferrer"
-                  >
-                    wallet
-                  </a>{" "}
-                  between a 0-100% allocation to $ETH.
-                </p>
-                <p>
-                  <span className="font-bold">Every month</span> 0.5% of the
-                  fund is withdrawn and distributed 20:80 between development &
-                  the DBL/WETH pool.
-                </p>
+                <h2 className="text-3xl font-bold tracking-tight text-theme-pan-navy py-6 ">
+                  Rules of Engagement
+                </h2>
+                <div className="">
+                  <dl className="border-b border-theme-pan-navy pb-3">
+                    <div className="pt-3 ">
+                      <span className="font-bold">Every week</span> the
+                      sentiment of our crew is automatically weighted to
+                      rebalance a{" "}
+                      <a
+                        href={CURSED_FUND_ARBISCAN}
+                        target="_blank"
+                        className="text-theme-pan-sky hover:opacity-80"
+                        rel="noreferrer"
+                      >
+                        wallet
+                      </a>{" "}
+                      between a 0-100% allocation to $ETH.
+                    </div>
+                  </dl>
+
+                  <dl className=" border-b border-theme-pan-navy pb-3">
+                    <div className="pt-3 ">
+                      <span className="font-bold">Every month</span> 0.5% of the
+                      fund is withdrawn and distributed 20:80 between
+                      development & the DBL/WETH pool.
+                    </div>
+                  </dl>
+                </div>
               </span>
-              {parseFloat(displayFromWei(balances.doubloonBalance)) <
-              DBL_MINIMUM ? (
+              {displayDbl < DBL_MINIMUM ? (
                 <></>
               ) : (
                 <>
                   <span className=" font-bold inline-flex items-center rounded-full py-0.5 text-md text-theme-pan-navy">
                     Balance:{" "}
                     <span className="text-theme-sky pl-2">
-                      {parseFloat(
-                        displayFromWei(balances.doubloonBalance)
-                      ).toFixed(2)}
+                      {displayDbl.toFixed(2)}
                     </span>
                   </span>{" "}
                   <div className="inline-flex pl-1 translate-y-1.5 justify-start">
@@ -359,26 +354,24 @@ const GalleonExperiment = () => {
       <div className="block mt-2 border-b border-theme-pan-navy col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne mb-3 divide-y divide-theme-pan-navy">
         <div className="w-full items-center justify-between p-6 space-x-6">
           <div>
-            <h3 className="text-lg font-bold leading-6 text-theme-pan-navy">
+            <h2 className="text-3xl font-bold tracking-tight text-theme-pan-navy py-6 ">
+              {" "}
               Statistics & Rebalancing
-            </h3>
-
+            </h2>
             {account ? (
               <>
                 <div className="  ">
                   <h3 className="text-lg font-medium leading-6 text-theme-pan-navy">
                     Current Holdings
                   </h3>
-                  <p className="text-md pt-3 text-center">
+                  <p className="text-md pt-3 text-left">
                     Total Fund Value:{" "}
                     <span className="font-bold">
                       $
                       {eth &&
                         fundWethBalance &&
                         fundUsdcBalance &&
-                        parseFloat(displayFromWei(fundWethBalance, 2, 18)) *
-                          eth +
-                          parseFloat(displayFromWei(fundUsdcBalance, 2, 6))}
+                        displayWeth * eth + displayUsdc}
                     </span>
                   </p>
                   <dl className="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 justify-center">
