@@ -15,7 +15,7 @@ import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 import metamaskIcon from "assets/metamask.png";
 import walletconnectIcon from "assets/walletconnect.svg";
-import { ARBITRUM, MAINNET, OPTIMISM, POLYGON } from "constants/chains";
+import { ARBITRUM } from "constants/chains";
 import { metaMaskLink } from "constants/externalLinks";
 import { colors } from "styles/colors";
 import argentIcon from "assets/argent.png";

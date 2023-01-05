@@ -49,12 +49,9 @@ const Hero = () => {
                 <h2 className="text-2xl  font-morion font-bold text-theme-pan-navy text-center">
                   Running Experiments
                 </h2>
-                <ul
-                  role="list"
-                  className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2"
-                >
+                <ul className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2">
                   {projects.map((project) => (
-                    <Link to={project.router}>
+                    <Link key={project.name} to={project.router}>
                       <li
                         onClick={() => {
                           setExperiment(project.experiment);

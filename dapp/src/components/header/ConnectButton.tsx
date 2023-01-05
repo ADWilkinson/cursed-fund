@@ -53,7 +53,7 @@ const ConnectButton = () => {
         },
       });
     }
-  }, [account]);
+  }, [account, toast]);
 
   const onClickTransactionState = () => {
     if (!pendingTxHash || pendingTxState === PendingTransactionState.none)

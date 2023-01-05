@@ -66,7 +66,7 @@ const ControlExperiment = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [state]);
+  }, [state, account, isBullish]);
 
   useEffect(() => {
     getDocs(collection(db, CONTROL_COLLECTION)).then((snapshot) => {
@@ -250,7 +250,7 @@ const ControlExperiment = () => {
                     }
                     onClick={() => pushSentiment(BULLISH)}
                     type="button"
-                    className="inline-flex  mx-2 items-center rounded-xl border disabled:bg-theme-pan-navy disabled:opacity-70 border-transparent bg-theme-pan-sky px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none "
+                    className="inline-flex  mx-2 items-center rounded-xl border disabled:bg-theme-pan-navy disabled:opacity-60 border-transparent bg-theme-pan-sky px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none "
                   >
                     Bullish
                   </button>
@@ -261,7 +261,7 @@ const ControlExperiment = () => {
                       control.account.toLowerCase() === account.toLowerCase()
                     }
                     type="button"
-                    className="inline-flex  mx-2 items-center rounded-xl border border-transparent disabled:bg-theme-pan-navy disabled:opacity-70 bg-theme-pan-navy px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none"
+                    className="inline-flex  mx-2 items-center rounded-xl border border-transparent disabled:bg-theme-pan-navy disabled:opacity-60 bg-theme-pan-navy px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none"
                   >
                     Bearish
                   </button>

@@ -88,6 +88,8 @@ export const useApproval = (
     setIsApproving,
     spenderAddress,
     tokenAddress,
+    chainId,
+    addTransaction,
   ]);
 
   useEffect(() => {

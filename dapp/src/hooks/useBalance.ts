@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { BigNumber, Contract, providers } from "ethers";
 
-import { useEtherBalance, useTokenBalance } from "@usedapp/core";
+import { useEtherBalance } from "@usedapp/core";
 
 import { DoubloonToken, ETH, Token, USDC, WETH } from "constants/tokens";
 import { useAccount } from "hooks/useAccount";
@@ -62,7 +62,7 @@ export const useBalance = () => {
     };
 
     fetchAllBalances();
-  }, [account, pendingTxState, chainId]);
+  }, [account, pendingTxState, chainId, provider]);
 
   const getBalance = useCallback(
     (tokenSymbol: string): BigNumber | undefined => {

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 
@@ -16,14 +16,17 @@ const NetworkSelector = () => {
     SUPPORTED_CHAINS.find((x) => x.chainId === chainId) ?? MAINNET
   );
 
-  const setNetwork = (network) => {
-    changeNetwork(network.chainId);
-    setSelected(network);
-  };
+  const setNetwork = useCallback(
+    (network) => {
+      changeNetwork(network.chainId);
+      setSelected(network);
+    },
+    [changeNetwork, setSelected]
+  );
 
   useEffect(() => {
     setNetwork(SUPPORTED_CHAINS.find((x) => x.chainId === chainId) ?? MAINNET);
-  }, [chainId]);
+  }, [chainId, setNetwork]);
 
   return (
     <div className="inline-flex ml-4">

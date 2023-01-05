@@ -225,18 +225,18 @@ const GalleonExperiment = () => {
                 </div>
                 <div className="m-auto flex justify-center py-2">
                   <button
-                    disabled={displayDbl < DBL_MINIMUM}
+                    disabled={displayDbl < DBL_MINIMUM || isBullish}
                     onClick={() => pushSentiment(BULLISH)}
                     type="button"
-                    className="inline-flex  mx-2 items-center rounded-xl border disabled:bg-theme-pan-navy disabled:opacity-70 border-transparent bg-theme-pan-sky px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none "
+                    className="inline-flex  mx-2 items-center rounded-xl border disabled:opacity-60 border-transparent bg-theme-pan-sky px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none "
                   >
                     Bullish
                   </button>
                   <button
-                    disabled={displayDbl < DBL_MINIMUM}
+                    disabled={displayDbl < DBL_MINIMUM || !isBullish}
                     onClick={() => pushSentiment(BEARISH)}
                     type="button"
-                    className="inline-flex  mx-2 items-center rounded-xl border border-transparent disabled:bg-theme-pan-navy disabled:opacity-70 bg-theme-pan-navy px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none"
+                    className="inline-flex  mx-2 items-center rounded-xl border border-transparent disabled:opacity-60 bg-theme-pan-navy px-6 py-2 text-md text-white hover:opacity-80 focus:outline-none"
                   >
                     Bearish
                   </button>
