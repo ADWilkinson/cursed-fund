@@ -149,7 +149,7 @@ const ControlExperiment = () => {
       <div className="block col-span-1 md:w-1/2 m-auto bg-theme-pan-champagne border-t  border-theme-pan-navy  divide-y divide-theme-pan-navy">
         <div className="block border-none">
           <p className="text-xl text-theme-pan-sky pt-6 font-bold  m-auto text-center justify-center">
-            1000 USDC to allocate
+            1,000 USDC to allocate
           </p>
           <p className="text-xl text-theme-pan-navy  m-auto text-center justify-center">
             Tag us on Twitter<br></br>
@@ -310,26 +310,19 @@ const ControlExperiment = () => {
                               </p>
                               <p>
                                 Potential Reward:{" "}
-                                {parseFloat(
-                                  displayFromWei(fundWethBalance, 2, 18)
-                                ) >
-                                parseFloat(
-                                  displayFromWei(fundUsdcBalance, 2, 6)
-                                ) ? (
+                                {displayWeth
+                                 >
+                                displayUsdc ? (
                                   <>
                                     {(
-                                      parseFloat(
-                                        displayFromWei(fundWethBalance, 2, 18)
-                                      ) / 100
+                                      displayWeth / 100
                                     ).toFixed(3)}{" "}
                                     WETH
                                   </>
                                 ) : (
                                   <>
                                     {(
-                                      parseFloat(
-                                        displayFromWei(fundUsdcBalance, 2, 6)
-                                      ) / 100
+                                      displayUsdc / 100
                                     ).toFixed(2)}{" "}
                                     USDC
                                   </>
@@ -481,7 +474,7 @@ const ControlExperiment = () => {
                       <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
                         {" "}
                         <span className=" ">
-                          {displayFromWei(fundWethBalance, 2, 18)}
+                          {displayWeth}
                         </span>
                         <div className="inline-flex pr-2 translate-y-1.5 justify-start">
                           <Box className="justify-start text-left " mt="16px">
@@ -504,7 +497,7 @@ const ControlExperiment = () => {
                       <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
                         {" "}
                         <span className=" ">
-                          {displayFromWei(fundUsdcBalance, 2, 6)}
+                          {displayUsdc}
                         </span>
                         <div className="inline-flex pl-2 translate-y-1.5 justify-start">
                           <Box className="justify-start text-left " mt="16px">
