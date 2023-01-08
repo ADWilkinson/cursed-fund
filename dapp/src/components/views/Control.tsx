@@ -463,7 +463,7 @@ const ControlExperiment = () => {
                       {eth &&
                         fundWethBalance &&
                         fundUsdcBalance &&
-                        displayWeth * eth + displayUsdc}
+                        (displayWeth * eth + displayUsdc).toFixed(2)}
                     </span>
                   </p>
                   <dl className="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2 justify-center">
