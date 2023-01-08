@@ -27,3 +27,4 @@ dapp/.yarn/cache
 # Local Netlify folder
 .netlify
 
+services/functions/key.json

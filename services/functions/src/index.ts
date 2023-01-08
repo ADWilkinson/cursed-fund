@@ -1,7 +1,9 @@
 import * as functions from "firebase-functions";
 const fetch = require("node-fetch");
 const admin = require("firebase-admin");
-admin.initializeApp();
+var serviceAccount = require("../key.json");
+
+admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 
 async function postMessageToDiscord(botName: string, messageBody: string) {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
@@ -201,11 +203,11 @@ exports.scheduledGalleonSnapshot = functions.pubsub
       });
 
     const bullish = votes.filter((doc: any) => {
-      return doc.data().isBullish === true;
+      return doc.isBullish === true;
     }).length;
 
     const bearish = votes.filter((doc: any) => {
-      return doc.data().isBullish === false;
+      return doc.isBullish === false;
     }).length;
 
     const percentBullish = Math.round((bullish / votes.length) * 100);
