@@ -100,18 +100,18 @@ const Snapshots = () => {
                       <tbody className="divide-y divide-theme-pan-navy bg-white">
                         {galleonSnapshots.length === 0 ? (
                           <>
-                            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-theme-pan-navy sm:pl-6">
+                            <tr className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-theme-pan-navy sm:pl-6">
                               -
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
+                            </tr>
+                            <tr className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
                               -
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
+                            </tr>
+                            <tr className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
                               -
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
+                            </tr>
+                            <tr className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
                               -
-                            </td>
+                            </tr>
                           </>
                         ) : (
                           <>
@@ -126,10 +126,10 @@ const Snapshots = () => {
                                   {snapshot.totalVotes}
                                 </td>
                                 <td className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
-                                  {snapshot.percentBullish}%
+                                  {snapshot.wethPercent}%
                                 </td>
                                 <td className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
-                                  {snapshot.percentBearish}%
+                                  {snapshot.usdcPercent}%
                                 </td>
                               </tr>
                             ))}
@@ -187,15 +187,15 @@ const Snapshots = () => {
                       <tbody className="divide-y divide-theme-pan-navy bg-white">
                         {galleonSnapshots.length === 0 ? (
                           <>
-                            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-theme-pan-navy sm:pl-6">
+                            <tr className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-theme-pan-navy sm:pl-6">
                               -
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
+                            </tr>
+                            <tr className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
                               -
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
+                            </tr>
+                            <tr className="whitespace-nowrap px-3 py-4 text-sm text-theme-pan-navy">
                               -
-                            </td>
+                            </tr>
                           </>
                         ) : (
                           <>
