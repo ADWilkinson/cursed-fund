@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   const [experiment, setExperiment] = useState<string>("");
 
-  const projects = [
+  const pastExperiments = [
     {
       name: "Royal Fortune Fund",
       value: "DBL",
@@ -34,29 +34,34 @@ const Hero = () => {
               Cursed Fund
             </h1>
             <p className="mt-6 text-lg leading-8 text-theme-pan-navy sm:text-center">
-              Social experiments within decentralised fund management by{" "}
-              <a
+              New fund arriving with the <a className="text-theme-pan-sky" href="https://cursedpirates.xyz" target={'_blank'}>Cursed Pirates</a> NFT collection launch.
+              {/* <a
                 target={"_blank"}
                 className="text-theme-pan-sky"
                 href="https://twitter.com/andrew_eth"
                 rel="noreferrer"
               >
                 @andrew_eth{" "}
-              </a>
+              </a> */}
             </p>
-            <div className="mt-8 flex gap-x-4 sm:justify-center">
+            <div className="mt-8 flex gap-x-4 sm:justify-center ">
               <div className="border-b border-b-theme-pan-navy pb-6">
                 <h2 className="text-2xl  font-morion font-bold text-theme-pan-navy text-center">
-                  Running Experiments
+                  Past Experiments
                 </h2>
-                <ul className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2">
-                  {projects.map((project) => (
-                    <Link key={project.name} to={project.router}>
+                <ul className="opacity-60 mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2">
+                  {pastExperiments.map((project) => (
+                    <div 
+                    >
+                      {/* <Link key={project.name}
+                        to={project.router}
+                      > */}
                       <li
                         onClick={() => {
                           setExperiment(project.experiment);
                         }}
-                        className="col-span-1 hover:bg-theme-sky  cursor-pointer flex rounded-2xl"
+                      
+                        className="col-span-1  hover:bg-theme-sky  cursor-pointer flex rounded-2xl"
                       >
                         <div
                           className={classNames(
@@ -79,7 +84,8 @@ const Hero = () => {
                           </div>
                         </div>
                       </li>
-                    </Link>
+                      </div>
+                    // </Link>
                   ))}
                 </ul>
               </div>
