@@ -24,7 +24,7 @@ import ConnectButton from "components/header/ConnectButton";
 import { Link } from "react-router-dom";
 import { useMarketData } from "providers/MarketData/MarketDataProvider";
 
-const GalleonExperiment = () => {
+const CursedExperiment = () => {
   const { library } = useEthers();
   const { balances } = useBalance();
   const { account } = useAccount();
@@ -516,4 +516,4 @@ const GalleonExperiment = () => {
   );
 };
 
-export default GalleonExperiment;
+export default CursedExperiment;

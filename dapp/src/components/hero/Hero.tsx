@@ -6,19 +6,19 @@ const Hero = () => {
 
   const projects = [
     {
-      name: "Royal Fortune Fund",
+      name: "Cursed Fund",
       value: "DBL",
-      description: "Galleon DAO $ETH Fund",
-      experiment: "GALLEON",
-      router: "royalfortune",
+      description: "Social Fund Experiment",
+      experiment: "CURSEDPIRATES",
+      router: "vote",
     },
-    {
-      name: "Control Point Fund",
-      value: "ETH",
-      description: "Capture to Earn",
-      experiment: "CONTROL",
-      router: "control",
-    },
+    // {
+    //   name: "Control Point Fund",
+    //   value: "ETH",
+    //   description: "Capture to Earn",
+    //   experiment: "CONTROL",
+    //   router: "control",
+    // },
   ];
 
   function classNames(...classes) {
@@ -34,22 +34,23 @@ const Hero = () => {
               Cursed Fund
             </h1>
             <p className="mt-6 text-lg leading-8 text-theme-pan-navy sm:text-center">
-              Social experiments within decentralised fund management by{" "}
+              Social fund experiment with the 
               <a
                 target={"_blank"}
                 className="text-theme-pan-sky"
-                href="https://twitter.com/andrew_eth"
+                href="https://twitter.com/cursedpirates"
                 rel="noreferrer"
               >
-                @andrew_eth{" "}
+                {" "}Cursed Pirates{" "}
               </a>
+              NFT Community.
             </p>
             <div className="mt-8 flex gap-x-4 sm:justify-center">
               <div className="border-b border-b-theme-pan-navy pb-6">
                 <h2 className="text-2xl  font-morion font-bold text-theme-pan-navy text-center">
-                  Running Experiments
+                
                 </h2>
-                <ul className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2">
+                <ul className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-1 sm:gap-6 lg:grid-cols-1">
                   {projects.map((project) => (
                     <Link key={project.name} to={project.router}>
                       <li
