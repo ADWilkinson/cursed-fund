@@ -12,7 +12,7 @@ import "./index.css";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import CursedExperiment from "components/views/Cursed";
-// import ControlExperiment from "components/views/Control";
+import ControlExperiment from "components/views/Control";
 import Hero from "components/hero/Hero";
 import Snapshots from "components/views/Snapshots";
 
@@ -66,14 +66,14 @@ const router = createBrowserRouter([
       </App>
     ),
   },
-  // {
-  //   path: "/control",
-  //   element: (
-  //     <App>
-  //       <ControlExperiment />
-  //     </App>
-  //   ),
-  // },
+  {
+    path: "/control",
+    element: (
+      <App>
+        <ControlExperiment />
+      </App>
+    ),
+  },
   {
     path: "/snapshots",
     element: (

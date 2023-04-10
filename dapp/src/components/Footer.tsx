@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="text-center justify-center ">
+    <footer className="text-center justify-center opacity-50">
       <div>
         <a
           href="https://github.com/ADWilkinson/cursed-fund/discussions"

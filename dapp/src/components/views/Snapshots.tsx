@@ -48,10 +48,10 @@ const Snapshots = () => {
 
       <PageTitle
         title="Fund Snapshots"
-        subtitle="Rebalance weights and participation winners."
+        subtitle="Snapshots are inactive whilst the Cursed Fund project is dormant"
       />
 
-      <div className="block  bg-theme-pan-champagne border-t border-b mb-3 border-theme-pan-navy   divide-theme-pan-navy">
+      {/* <div className="block  bg-theme-pan-champagne border-t border-b mb-3 border-theme-pan-navy   divide-theme-pan-navy">
         <div className="w-full items-center justify-between p-6 border-none space-x-6">
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-center">
@@ -228,7 +228,7 @@ const Snapshots = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

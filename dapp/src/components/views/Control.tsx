@@ -310,22 +310,10 @@ const ControlExperiment = () => {
                               </p>
                               <p>
                                 Potential Reward:{" "}
-                                {displayWeth
-                                 >
-                                displayUsdc ? (
-                                  <>
-                                    {(
-                                      displayWeth / 100
-                                    ).toFixed(3)}{" "}
-                                    WETH
-                                  </>
+                                {displayWeth > displayUsdc ? (
+                                  <>{(displayWeth / 100).toFixed(3)} WETH</>
                                 ) : (
-                                  <>
-                                    {(
-                                      displayUsdc / 100
-                                    ).toFixed(2)}{" "}
-                                    USDC
-                                  </>
+                                  <>{(displayUsdc / 100).toFixed(2)} USDC</>
                                 )}
                               </p>
                             </>
@@ -473,9 +461,7 @@ const ControlExperiment = () => {
                       </dt>
                       <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
                         {" "}
-                        <span className=" ">
-                          {displayWeth}
-                        </span>
+                        <span className=" ">{displayWeth}</span>
                         <div className="inline-flex pr-2 translate-y-1.5 justify-start">
                           <Box className="justify-start text-left " mt="16px">
                             <Image
@@ -496,9 +482,7 @@ const ControlExperiment = () => {
                       </dt>
                       <dd className="mt-1 text-3xl font-semibold tracking-tight text-theme-pan-sky">
                         {" "}
-                        <span className=" ">
-                          {displayUsdc}
-                        </span>
+                        <span className=" ">{displayUsdc}</span>
                         <div className="inline-flex pl-2 translate-y-1.5 justify-start">
                           <Box className="justify-start text-left " mt="16px">
                             <Image
