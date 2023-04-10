@@ -54,11 +54,11 @@ const App = (props) => {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Page>
         <>
           {props.children}
-          {/* <Footer></Footer> */}
+          <Footer></Footer>
         </>
       </Page>
     </>
